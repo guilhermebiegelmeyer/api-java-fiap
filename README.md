@@ -23,6 +23,6 @@
 
 ## ----###SUPORTE PARA RODAR LOCAL###----
 
-<p>Command create and run Docker:</p>
+<p>Command create and run MYSQL with Docker:</p>
 
 ```docker run -d -p 3306:3306 --name mysql-fiap-dev -e MYSQL_ROOT_PASSWORD=fiap-dev -e MYSQL_DATABASE=fiapprojectsevicedb -e MYSQL_USER=fiap -e MYSQL_PASSWORD=fiap mysql/mysql-server:latest```
