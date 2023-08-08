@@ -6,14 +6,16 @@
 #### http://localhost:8080/student
 ```
 {
-    "name": "Guilherme Biegelmeyer"
+	"name": "Guilherme Biegelmeyer",
+	"birth_date": "06/04/1995"
 }
 ```
 ### PUT:
 #### http://localhost:8080/student/{id}
 ```
 {
-    "name": "Guilherme Biegelmeyer"
+	"name": "Guilherme Biegelmeyer",
+	"birth_date": "06/04/1995"
 }
 ```
 ### DELETE:

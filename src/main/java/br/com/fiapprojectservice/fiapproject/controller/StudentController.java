@@ -38,7 +38,7 @@ public class StudentController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<Student>> getLista() {
+    public ResponseEntity<List<StudentDTO>> getLista() {
         return ResponseEntity.ok(studentApplication.getStudents());
     }
 

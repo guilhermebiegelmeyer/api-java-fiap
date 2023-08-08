@@ -6,4 +6,5 @@ import lombok.Data;
 public class StudentDTO {
     private Long id;
     private String name;
+    private String birth_date;
 }

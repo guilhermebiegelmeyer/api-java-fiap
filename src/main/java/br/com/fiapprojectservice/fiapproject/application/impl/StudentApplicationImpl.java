@@ -6,7 +6,11 @@ import br.com.fiapprojectservice.fiapproject.model.Student;
 import br.com.fiapprojectservice.fiapproject.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Date;
 
 @Component
 public class StudentApplicationImpl implements StudentApplication {
@@ -26,6 +30,10 @@ public class StudentApplicationImpl implements StudentApplication {
         }
 
         student.setName(studentDTO.getName());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date birthDate = dateFormat.parse(studentDTO.getBirth_date());
+        student.setBirth_date(birthDate);
+
         studentService.saveStudent(student);
     }
 
@@ -34,6 +42,10 @@ public class StudentApplicationImpl implements StudentApplication {
         Student student = new Student();
         student.setId(studentDTO.getId());
         student.setName(studentDTO.getName());
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date birthDate = dateFormat.parse(studentDTO.getBirth_date());
+        student.setBirth_date(birthDate);
 
         this.studentService.saveStudent(student);
 
@@ -52,7 +64,22 @@ public class StudentApplicationImpl implements StudentApplication {
     }
 
     @Override
-    public List<Student> getStudents() {
-        return studentService.getStudentList();
+    public List<StudentDTO> getStudents() {
+        List<Student> students = studentService.getStudentList();
+        List<StudentDTO> studentDTOs = new ArrayList<>();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        for (Student student : students) {
+            StudentDTO studentDTO = new StudentDTO();
+            studentDTO.setId(student.getId());
+            studentDTO.setName(student.getName());
+            
+            String birthDateStr = dateFormat.format(student.getBirth_date());
+            studentDTO.setBirth_date(birthDateStr);
+
+            studentDTOs.add(studentDTO);
+        }
+
+        return studentDTOs;
     }
 }
